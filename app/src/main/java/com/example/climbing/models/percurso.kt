@@ -7,6 +7,7 @@ import com.google.firebase.ktx.Firebase
 import java.util.HashMap
 
 data class percurso(
+    
     var percursoId       : String?,
     var name     : String?,
     var duracao       : String?,
