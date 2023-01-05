@@ -10,7 +10,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class LoginActivity : AppCompatActivity {
+
+
+
+class LoginActivity : AppCompatActivity() {
+
     private lateinit var auth: FirebaseAuth
     lateinit var binding: ActivityLoginBinding
 
@@ -22,31 +26,34 @@ class LoginActivity : AppCompatActivity {
 
         auth = Firebase.auth
 
+
         binding.buttonLogin.setOnClickListener {
 
-            val email = binding.editTextName.text.toString()
-            val password = binding.editTextPassword.text.toString()
+            val email = binding.editTextName.text.toString().trim()
+            val password = binding.editTextPassword.text.toString().trim()
+
 
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "signInWithEmail:success")
-                        //val user = auth.currentUser
+                        Log.d(TAG, "createUserWithEmail:success")
+                        val user = auth.currentUser
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                     } else {
                         // If sign in fails, display a message to the user.
-                        Log.w(TAG, "signInWithEmail:failure", task.exception)
-                        Toast.makeText(this,
-                            "Utilizador ou password inválido!",
-                            Toast.LENGTH_LONG)
+                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                        Toast.makeText(baseContext, "Authentication failed.",
+                            Toast.LENGTH_SHORT)
                             .show()
 
                     }
                 }
-
-
+        }
+        binding.buttonRegister.setOnClickListener{
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 
