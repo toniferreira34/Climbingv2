@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -42,7 +43,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonPercursos.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_percursos)
+            findNavController().navigate(R.id.action_navigation_home_to_newPercursoFragment)
         }
 
     }
