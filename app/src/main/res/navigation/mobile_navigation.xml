@@ -27,7 +27,7 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.climbing.ui.notifications.ProfileFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/percursos"
@@ -44,6 +44,10 @@
     <fragment
         android:id="@+id/newPercursoFragment"
         android:name="com.example.climbing.ui.home.New_percursoFragment"
-        android:label="fragment_new_percurso"
-        tools:layout="@layout/fragment_new_percurso" />
+        android:label="New Route"
+        tools:layout="@layout/fragment_new_percurso" >
+        <action
+            android:id="@+id/action_newPercursoFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

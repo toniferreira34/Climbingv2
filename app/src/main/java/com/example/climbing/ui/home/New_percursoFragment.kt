@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import com.example.climbing.R
 import com.example.climbing.databinding.FragmentHomeBinding
 import com.example.climbing.databinding.FragmentNewPercursoBinding
@@ -43,6 +44,8 @@ class New_percursoFragment : Fragment() {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
         }
+
+        findNavController().popBackStack(R.id.action_newPercursoFragment_to_navigation_home, false)
     }
 
 
