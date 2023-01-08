@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.example.climbing.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_percursos"
             app:destination="@id/percursos" />
@@ -33,7 +33,7 @@
         android:id="@+id/percursos"
         android:name="com.example.climbing.ui.home.Percursos"
         android:label="fragment_percursos"
-        tools:layout="@layout/fragment_percursos" >
+        tools:layout="@layout/fragment_percursos">
         <action
             android:id="@+id/action_percursos_to_navigation_home"
             app:destination="@id/navigation_home" />
@@ -45,9 +45,10 @@
         android:id="@+id/newPercursoFragment"
         android:name="com.example.climbing.ui.home.New_percursoFragment"
         android:label="New Route"
-        tools:layout="@layout/fragment_new_percurso" >
+        tools:layout="@layout/fragment_new_percurso">
         <action
             android:id="@+id/action_newPercursoFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            app:destination="@id/navigation_home"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

@@ -5,57 +5,85 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.example.climbing.MainActivity
 import com.example.climbing.R
+import com.example.climbing.RegisterActivity
 import com.example.climbing.databinding.FragmentHomeBinding
 import com.example.climbing.databinding.FragmentNewPercursoBinding
 import com.example.climbing.databinding.FragmentPercursosBinding
+import com.example.climbing.models.User
+import com.example.climbing.models.percurso
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import com.google.firebase.storage.ktx.storageMetadata
+import java.io.File
 
 
 class New_percursoFragment : Fragment() {
-
+    private lateinit var auth: FirebaseAuth
     private var _binding: FragmentNewPercursoBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    lateinit var imageView: ImageView
-    lateinit var button: Button
-    private val pickImage = 100
-    private var imageUri: Uri? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_percurso, container, false)
-        _binding = FragmentNewPercursoBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        binding.imagePercurso.setOnClickListener {
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, pickImage)
-        }
+        _binding = FragmentNewPercursoBinding.inflate(inflater, container, false)
+
+
+
+
+        return binding.root
+
+
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        super.onCreate(savedInstanceState)
+
+
+        auth = FirebaseAuth.getInstance()
+
 
         findNavController().popBackStack(R.id.action_newPercursoFragment_to_navigation_home, false)
-    }
+        binding.buttonSalvarPercurso.setOnClickListener{
 
+            percurso(
+                binding.editTextPercursoId.text.toString(),
+                binding.editTextPercursoName.text.toString(),
+                binding.editTextPercursoDuracao.text.toString(),
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK && requestCode == pickImage) {
-            imageUri = data?.data
-            imageView.setImageURI(imageUri)
+                ).sendPercurso { error ->
+                error?.let {
+                    Toast.makeText(requireContext(), "Ocurreu algum erro!", Toast.LENGTH_LONG).show()
+                } ?: kotlin.run {
+                    Toast.makeText(requireContext(), "Guardado com sucesso!", Toast.LENGTH_LONG).show()
+
+                }
+            }
         }
-
-
     }
 }
+
+
+
+

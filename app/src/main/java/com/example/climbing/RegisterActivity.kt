@@ -33,7 +33,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance()
 
 
         binding.photo.setOnClickListener {

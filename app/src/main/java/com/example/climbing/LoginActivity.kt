@@ -33,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.editTextPassword.text.toString().trim()
 
 
+
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -44,19 +45,22 @@ class LoginActivity : AppCompatActivity() {
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(baseContext, "Authentication failed.",
-                            Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            baseContext, "Authentication failed.",
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
 
                     }
                 }
         }
-        binding.buttonRegister.setOnClickListener{
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
-    }
+            binding.buttonRegister.setOnClickListener {
+                val intent = Intent(this, RegisterActivity::class.java)
+                startActivity(intent)
+            }
 
+
+    }
     companion object {
         const val TAG = "LoginActivity"
     }

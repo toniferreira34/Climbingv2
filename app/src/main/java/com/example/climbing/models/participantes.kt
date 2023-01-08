@@ -12,7 +12,7 @@ class participantes (
     var name     : String?,
     var idade     : String?,
     var nacionalidade      : String?,
-    var photoParticipante: String?,
+    //var photoParticipante: String?,
     ){
 
 
@@ -36,7 +36,7 @@ class participantes (
             "name"      to name     ,
             "idade"         to idade       ,
             "nacionalidade" to nacionalidade,
-            "photoParticipante" to photoParticipante,
+            //"photoParticipante" to photoParticipante,
         )
     }
 
@@ -77,7 +77,7 @@ class participantes (
                 doc.getString("name"     ),
                 doc.getString("idade"        ),
                 doc.getString("nacionalidade"        ),
-                doc.getString("photoParticipante"      )
+                //doc.getString("photoParticipante"      )
             )
         }
     }

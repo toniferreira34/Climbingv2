@@ -9,62 +9,45 @@
     <TextView
         android:id="@+id/textNameUser"
         android:layout_width="0dp"
-        android:layout_height="70px"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="65dp"
-        android:layout_marginEnd="55dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="28dp"
         android:hint="Name"
+        app:layout_constraintBottom_toTopOf="@+id/textEmailUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textEmailUser"
         android:layout_width="0dp"
         android:layout_height="70px"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="64dp"
         android:hint="Email"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogOut"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textNameUser" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="40dp"
-        android:text="Profile User"
-        android:textSize="70px"
-        app:layout_constraintBottom_toTopOf="@+id/imageProfile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="204dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginBottom="175dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginBottom="188dp"
         android:text="LogOut"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEmailUser"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageProfile"
-        android:layout_width="128dp"
-        android:layout_height="123dp"
-        android:layout_marginStart="172dp"
-        android:layout_marginBottom="65dp"
+        android:layout_width="185dp"
+        android:layout_height="168dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginBottom="36dp"
         android:src="@drawable/ic_baseline_account_circle_24"
         app:layout_constraintBottom_toTopOf="@+id/textNameUser"
         app:layout_constraintStart_toStartOf="parent" />
