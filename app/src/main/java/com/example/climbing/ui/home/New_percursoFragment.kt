@@ -8,6 +8,7 @@ import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -34,6 +35,9 @@ class New_percursoFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private var _binding: FragmentNewPercursoBinding? = null
 
+    lateinit var imageView: ImageView
+    private var imageUri: Uri? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -58,31 +62,110 @@ class New_percursoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        super.onCreate(savedInstanceState)
-
+        setHasOptionsMenu(true)
 
         auth = FirebaseAuth.getInstance()
 
+        binding.imagePercurso.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, 1001)
+        }
 
         findNavController().popBackStack(R.id.action_newPercursoFragment_to_navigation_home, false)
-        binding.buttonSalvarPercurso.setOnClickListener{
+        binding.buttonSalvarPercurso.setOnClickListener {
 
-            percurso(
-                binding.editTextPercursoId.text.toString(),
-                binding.editTextPercursoName.text.toString(),
-                binding.editTextPercursoDuracao.text.toString(),
+            storeBitmap(imageUri!!){
+                percurso(
+                    binding.editTextPercursoId.text.toString(),
+                    binding.editTextPercursoName.text.toString(),
+                    binding.editTextPercursoDuracao.text.toString(),
+                    it
+                    ).sendPercurso { error ->
+                    error?.let {
+                        Toast.makeText(requireContext(), "Ocurreu algum erro!", Toast.LENGTH_LONG)
+                            .show()
+                    } ?: kotlin.run {
+                        Toast.makeText(requireContext(), "Guardado com sucesso!", Toast.LENGTH_LONG)
+                            .show()
 
-                ).sendPercurso { error ->
-                error?.let {
-                    Toast.makeText(requireContext(), "Ocurreu algum erro!", Toast.LENGTH_LONG).show()
-                } ?: kotlin.run {
-                    Toast.makeText(requireContext(), "Guardado com sucesso!", Toast.LENGTH_LONG).show()
-
+                    }
                 }
             }
+
+        }
+
+    }
+    fun storeBitmap(uri: Uri, callback:(filename:String)->Unit){
+        val storage = Firebase.storage
+        val storageRef = storage.reference
+        val filename = "${uri.lastPathSegment}"
+        val riversRef = storageRef.child("images/${uri.lastPathSegment}")
+        val uploadTask = riversRef.putFile(uri)
+        uploadTask.addOnFailureListener {
+            Toast.makeText(
+                requireContext(),
+                "Não foi possivel guardar a imagem",
+                Toast.LENGTH_LONG
+            ).show()
+        }.addOnSuccessListener { taskSnapshot ->
+            callback.invoke(filename)
         }
     }
+/*
+    fun uploadFile(callback: (String?)->Unit) {
+        val storage = Firebase.storage
+        var storageRef = storage.reference
+        val file = Uri.fromFile(File(currentPhotoPath))
+        var metadata = storageMetadata {
+            contentType = "image/jpg"
+        }
+
+        val uploadTask = storageRef.child("images/${file.lastPathSegment}")
+            .putFile(file, metadata)
+
+        uploadTask.addOnProgressListener {
+            val progress = (100.0 * it.bytesTransferred) / it.totalByteCount
+            Log.d(TAG, "Upload is $progress% done")
+        }.addOnPausedListener {
+            Log.d(TAG, "Upload is paused")
+        }.addOnFailureListener {
+            // Handle unsuccessful uploads
+            Log.d(TAG, it.toString())
+            callback(null)
+        }.addOnSuccessListener {
+            // Handle successful uploads on complete
+            Log.d(TAG, it.uploadSessionUri.toString())
+            callback(file.lastPathSegment)
+        }
+    }
+*/
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == 1001) {
+            imageUri = data?.data
+            binding.imagePercurso.setImageURI(imageUri)
+
+        }
+
+
+    }
+        override fun onOptionsItemSelected(item: MenuItem): Boolean {
+            return when (item.itemId) {
+                android.R.id.home -> {
+                    findNavController().popBackStack()
+                    true
+                }
+                else -> super.onOptionsItemSelected(item)
+            }
+        }
+
+    companion object {
+
+        const val TAG = "New_percursoFragment"
+    }
+
 }
+
 
 
 

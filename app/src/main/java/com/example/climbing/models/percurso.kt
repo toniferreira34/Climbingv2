@@ -11,7 +11,7 @@ data class percurso(
     var percursoId       : String?,
     var name     : String?,
     var duracao       : String?,
-    //var photoPercurso: String?,
+    var photoPercurso: String?,
 ) {
 
     fun toHashMap(): HashMap<String, Any?> {
@@ -19,7 +19,7 @@ data class percurso(
             "percursoId" to percursoId,
             "name" to name,
             "duracao" to duracao,
-            //"photoPercurso" to photoPercurso,
+            "photoPercurso" to photoPercurso,
         )
     }
 
@@ -54,7 +54,7 @@ data class percurso(
                 doc.getString("percursoId"),
                 doc.getString("name"),
                 doc.getString("duracao"),
-                //doc.getString("photoPercurso")
+                doc.getString("photoPercurso")
             )
         }
     }

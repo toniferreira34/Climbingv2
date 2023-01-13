@@ -6,6 +6,7 @@ import android.text.TextUtils.replace
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -20,6 +21,8 @@ import com.example.climbing.databinding.FragmentNewPercursoBinding
 import com.example.climbing.databinding.FragmentPercursosBinding
 import com.example.climbing.databinding.RowPercursoBinding
 import com.example.climbing.models.percurso
+import com.example.climbing.models.percurso.Companion.fromDoc
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
@@ -38,15 +41,26 @@ class Percursos : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_percursos, container, false)
         _binding = FragmentPercursosBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
 
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setHasOptionsMenu(true)
+        val db = Firebase.firestore
+        db.collection("percursos")
+            .addSnapshotListener{value, error->
+                percursos.clear()
+                for (doc in value?.documents!!){
+                    percursos.add(percurso.fromDoc(doc))
+
+                }
+                adapter.notifyDataSetChanged()
+            }
 
         binding.recyclerViewPercursos.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -66,6 +80,7 @@ class Percursos : Fragment() {
             val textViewName : TextView = binding.textViewName
             val textViewDuracao : TextView = binding.textViewduracao
 
+
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -84,6 +99,7 @@ class Percursos : Fragment() {
                 textViewId.text = percursos.percursoId
                 textViewName.text = percursos.name
                 textViewDuracao.text = percursos.duracao
+
             }
         }
 
@@ -92,7 +108,15 @@ class Percursos : Fragment() {
         }
 
     }
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                findNavController().popBackStack()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
 }
 

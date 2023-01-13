@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonPercursos.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_newPercursoFragment)
+            findNavController().navigate(R.id.action_navigation_home_to_percursos)
         }
 
     }
