@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_percursos_to_newPercursoFragment"
             app:destination="@id/newPercursoFragment" />
+        <action
+            android:id="@+id/action_percursos_to_participantesFragment"
+            app:destination="@id/participantesFragment" />
     </fragment>
     <fragment
         android:id="@+id/newPercursoFragment"
@@ -51,4 +54,9 @@
             app:destination="@id/navigation_home"
             app:popUpToInclusive="false" />
     </fragment>
+    <fragment
+        android:id="@+id/participantesFragment"
+        android:name="com.example.climbing.ui.home.ParticipantesFragment"
+        android:label="fragment_participantes"
+        tools:layout="@layout/fragment_participantes" />
 </navigation>

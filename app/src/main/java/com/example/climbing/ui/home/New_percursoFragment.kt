@@ -95,7 +95,7 @@ class New_percursoFragment : Fragment() {
         }
 
     }
-    fun storeBitmap(uri: Uri, callback:(filename:String)->Unit){
+    fun storeBitmap(uri: Uri, callback:(filename:String)->Unit) {
         val storage = Firebase.storage
         val storageRef = storage.reference
         val filename = "${uri.lastPathSegment}"
@@ -111,34 +111,6 @@ class New_percursoFragment : Fragment() {
             callback.invoke(filename)
         }
     }
-/*
-    fun uploadFile(callback: (String?)->Unit) {
-        val storage = Firebase.storage
-        var storageRef = storage.reference
-        val file = Uri.fromFile(File(currentPhotoPath))
-        var metadata = storageMetadata {
-            contentType = "image/jpg"
-        }
-
-        val uploadTask = storageRef.child("images/${file.lastPathSegment}")
-            .putFile(file, metadata)
-
-        uploadTask.addOnProgressListener {
-            val progress = (100.0 * it.bytesTransferred) / it.totalByteCount
-            Log.d(TAG, "Upload is $progress% done")
-        }.addOnPausedListener {
-            Log.d(TAG, "Upload is paused")
-        }.addOnFailureListener {
-            // Handle unsuccessful uploads
-            Log.d(TAG, it.toString())
-            callback(null)
-        }.addOnSuccessListener {
-            // Handle successful uploads on complete
-            Log.d(TAG, it.uploadSessionUri.toString())
-            callback(file.lastPathSegment)
-        }
-    }
-*/
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == 1001) {
