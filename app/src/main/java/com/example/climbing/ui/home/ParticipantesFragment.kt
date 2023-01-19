@@ -43,6 +43,16 @@ class ParticipantesFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        binding.floatingParticipante.setOnClickListener{
+            findNavController().navigate(R.id.action_participantesFragment_to_new_participanteFragment)
+
+        }
+    }
+
     inner class ParticipantesAdapter : RecyclerView.Adapter<ParticipantesAdapter.ViewHolder>(){
 
         inner class ViewHolder(binding: RowParticipanteBinding) : RecyclerView.ViewHolder(binding.root){

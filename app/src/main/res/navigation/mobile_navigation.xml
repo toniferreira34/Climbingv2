@@ -58,5 +58,14 @@
         android:id="@+id/participantesFragment"
         android:name="com.example.climbing.ui.home.ParticipantesFragment"
         android:label="fragment_participantes"
-        tools:layout="@layout/fragment_participantes" />
+        tools:layout="@layout/fragment_participantes" >
+        <action
+            android:id="@+id/action_participantesFragment_to_new_participanteFragment"
+            app:destination="@id/new_participanteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/new_participanteFragment"
+        android:name="com.example.climbing.ui.home.New_participanteFragment"
+        android:label="fragment_new_participante"
+        tools:layout="@layout/fragment_new_participante" />
 </navigation>

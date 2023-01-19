@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -79,7 +80,7 @@ class Percursos : Fragment() {
             val textViewId : TextView = binding.textViewId
             val textViewName : TextView = binding.textViewName
             val textViewDuracao : TextView = binding.textViewduracao
-
+            val line : ConstraintLayout = binding.linha
 
         }
 
@@ -99,6 +100,10 @@ class Percursos : Fragment() {
                 textViewId.text = percursos.percursoId
                 textViewName.text = percursos.name
                 textViewDuracao.text = percursos.duracao
+
+                line.setOnClickListener {
+                    findNavController().navigate(R.id.action_percursos_to_participantesFragment)
+                }
 
             }
         }
