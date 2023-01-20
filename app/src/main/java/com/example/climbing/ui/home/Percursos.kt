@@ -1,28 +1,21 @@
 package com.example.climbing.ui.home
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.text.TextUtils.replace
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.climbing.R
-import com.example.climbing.databinding.FragmentNewPercursoBinding
 import com.example.climbing.databinding.FragmentPercursosBinding
 import com.example.climbing.databinding.RowPercursoBinding
-import com.example.climbing.models.percurso
-import com.example.climbing.models.percurso.Companion.fromDoc
+import com.example.climbing.models.Percurso
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -33,7 +26,7 @@ class Percursos : Fragment() {
     private var _binding: FragmentPercursosBinding? = null
     private val binding get() = _binding!!
 
-    var percursos = arrayListOf<percurso>()
+    var percursos = arrayListOf<Percurso>()
 
     var adapter = PercursosAdapter()
 
@@ -57,7 +50,7 @@ class Percursos : Fragment() {
             .addSnapshotListener{value, error->
                 percursos.clear()
                 for (doc in value?.documents!!){
-                    percursos.add(percurso.fromDoc(doc))
+                    percursos.add(Percurso.fromDoc(doc))
 
                 }
                 adapter.notifyDataSetChanged()

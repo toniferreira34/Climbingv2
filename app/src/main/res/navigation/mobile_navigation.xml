@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_navigation_home_to_newPercursoFragment"
             app:destination="@id/newPercursoFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_new_participanteFragment"
+            app:destination="@id/new_participanteFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_participantesFragment"
+            app:destination="@id/participantesFragment" />
     </fragment>
 
     <fragment
@@ -67,5 +73,9 @@
         android:id="@+id/new_participanteFragment"
         android:name="com.example.climbing.ui.home.New_participanteFragment"
         android:label="fragment_new_participante"
-        tools:layout="@layout/fragment_new_participante" />
+        tools:layout="@layout/fragment_new_participante" >
+        <action
+            android:id="@+id/action_new_participanteFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

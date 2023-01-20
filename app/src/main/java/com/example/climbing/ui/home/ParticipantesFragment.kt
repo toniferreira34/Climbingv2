@@ -11,11 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.climbing.R
 import com.example.climbing.databinding.FragmentParticipantesBinding
-import com.example.climbing.databinding.FragmentPercursosBinding
 import com.example.climbing.databinding.RowParticipanteBinding
-import com.example.climbing.databinding.RowPercursoBinding
-import com.example.climbing.models.participantes
-import com.example.climbing.models.percurso
+import com.example.climbing.models.Participantes
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
@@ -25,7 +22,7 @@ class ParticipantesFragment : Fragment() {
     private var _binding: FragmentParticipantesBinding? = null
     private val binding get() = _binding!!
 
-    var participantes = arrayListOf<participantes>()
+    var participantes = arrayListOf<Participantes>()
 
     var adapter = ParticipantesAdapter()
 

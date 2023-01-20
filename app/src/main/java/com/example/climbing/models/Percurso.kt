@@ -6,7 +6,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.HashMap
 
-data class percurso(
+data class Percurso(
     
     var percursoId       : String?,
     var name     : String?,
@@ -41,15 +41,15 @@ data class percurso(
         fun postField(name: String, field: String) {
             val uid = FirebaseAuth.getInstance().currentUser!!.uid
             val db = Firebase.firestore
-            db.collection("percurso")
+            db.collection("percursos")
                 .document(uid)
                 .update(field, name)
 
 
         }
 
-        fun fromDoc(doc: DocumentSnapshot): percurso {
-            return percurso(
+        fun fromDoc(doc: DocumentSnapshot): Percurso {
+            return Percurso(
 
                 doc.getString("percursoId"),
                 doc.getString("name"),

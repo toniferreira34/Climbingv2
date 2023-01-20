@@ -5,30 +5,20 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.climbing.MainActivity
 import com.example.climbing.R
-import com.example.climbing.RegisterActivity
-import com.example.climbing.databinding.FragmentHomeBinding
 import com.example.climbing.databinding.FragmentNewPercursoBinding
-import com.example.climbing.databinding.FragmentPercursosBinding
-import com.example.climbing.models.User
-import com.example.climbing.models.percurso
+import com.example.climbing.models.Percurso
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.google.firebase.storage.ktx.storageMetadata
-import java.io.File
 
 
 class New_percursoFragment : Fragment() {
@@ -75,7 +65,7 @@ class New_percursoFragment : Fragment() {
         binding.buttonSalvarPercurso.setOnClickListener {
 
             storeBitmap(imageUri!!){
-                percurso(
+                Percurso(
                     binding.editTextPercursoId.text.toString(),
                     binding.editTextPercursoName.text.toString(),
                     binding.editTextPercursoDuracao.text.toString(),

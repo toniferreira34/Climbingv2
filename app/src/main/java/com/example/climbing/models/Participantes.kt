@@ -6,7 +6,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.HashMap
 
-class participantes (
+class Participantes (
 
     var participanteId       : String?,
     var name     : String?,
@@ -32,6 +32,7 @@ class participantes (
 
     fun toHashMap() : HashMap<String, Any?> {
         return hashMapOf(
+
             "participanteId"        to participanteId       ,
             "name"      to name     ,
             "idade"         to idade       ,
@@ -46,9 +47,7 @@ class participantes (
         val uid =  FirebaseAuth.getInstance().currentUser!!.uid
 
         val db = Firebase.firestore
-        db.collection("percurso")
-            .document(uid)
-            .collection("participantes")
+        db.collection("participantes")
             .document(uid)
             .set(toHashMap())
             .addOnSuccessListener {
@@ -70,9 +69,8 @@ class participantes (
 
         }
 
-        fun fromDoc(doc: DocumentSnapshot) : participantes {
-            return participantes(
-
+        fun fromDoc(doc: DocumentSnapshot) : Participantes {
+            return Participantes(
                 doc.getString("participanteId"       ),
                 doc.getString("name"     ),
                 doc.getString("idade"        ),
