@@ -61,7 +61,7 @@ class New_percursoFragment : Fragment() {
             startActivityForResult(gallery, 1001)
         }
 
-        findNavController().popBackStack(R.id.action_newPercursoFragment_to_navigation_home, false)
+
         binding.buttonSalvarPercurso.setOnClickListener {
 
             storeBitmap(imageUri!!){

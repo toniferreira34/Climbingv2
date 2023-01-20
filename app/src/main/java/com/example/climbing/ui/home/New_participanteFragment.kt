@@ -36,7 +36,7 @@ class New_participanteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        findNavController().popBackStack(R.id.action_new_participanteFragment_to_navigation_home, false)
+
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

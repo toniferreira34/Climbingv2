@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_navigation_home_to_percursos)
         }
         binding.buttonClientes.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_home_to_participantesFragment)
+            findNavController().navigate(R.id.action_navigation_home_to_participantesFragment2)
         }
 
     }
