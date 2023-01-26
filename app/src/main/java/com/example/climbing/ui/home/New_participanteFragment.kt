@@ -19,6 +19,7 @@ import com.example.climbing.models.Participantes
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import java.util.UUID
 
 
 class New_participanteFragment : Fragment() {
@@ -27,6 +28,8 @@ class New_participanteFragment : Fragment() {
 
     lateinit var imageView: ImageView
     private var imageUri: Uri? = null
+
+    //var teste = UUID.randomUUID()
 
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {

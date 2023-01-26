@@ -1,4 +1,4 @@
-package com.example.climbing.ui.notifications
+package com.example.climbing.ui.profile
 
 import android.content.Intent
 import android.graphics.BitmapFactory

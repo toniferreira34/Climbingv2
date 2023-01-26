@@ -1,46 +1,50 @@
-package com.example.climbing.ui.home
+package com.example.climbing.ui.measurements
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.climbing.R
-import com.example.climbing.databinding.FragmentPercursosBinding
+import com.example.climbing.databinding.FragmentDashboardBinding
+import com.example.climbing.databinding.FragmentSelectPercursoBinding
 import com.example.climbing.databinding.RowPercursoBinding
 import com.example.climbing.models.Percurso
+import com.example.climbing.ui.home.HomeViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
+class MeasurementsFragment : Fragment() {
 
-class Percursos : Fragment() {
+    private var _binding: FragmentDashboardBinding? = null
 
-    private var _binding: FragmentPercursosBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
     private val binding get() = _binding!!
-
-    var percursos = arrayListOf<Percurso>()
+    var Spercursos = arrayListOf<Percurso>()
 
     var adapter = PercursosAdapter()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentPercursosBinding.inflate(inflater, container, false)
+    ): View {
+        val MeasurementsViewModel =
+            ViewModelProvider(this).get(MeasurementsViewModel::class.java)
+
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,33 +54,30 @@ class Percursos : Fragment() {
         val db = Firebase.firestore
         db.collection("percursos")
             .addSnapshotListener{value, error->
-                percursos.clear()
+                Spercursos.clear()
                 for (doc in value?.documents!!){
-                    percursos.add(Percurso.fromDoc(doc))
+                    Spercursos.add(Percurso.fromDoc(doc))
 
                 }
                 adapter.notifyDataSetChanged()
             }
 
-        binding.recyclerViewPercursos.layoutManager =
+        binding.RecyclerViewPercursoSelec.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        binding.recyclerViewPercursos.adapter = adapter
-        binding.recyclerViewPercursos.itemAnimator = DefaultItemAnimator()
+        binding.RecyclerViewPercursoSelec.adapter = adapter
+        binding.RecyclerViewPercursoSelec.itemAnimator = DefaultItemAnimator()
 
-        binding.floatingActionButtonPercurso.setOnClickListener{
-            findNavController().navigate(R.id.action_percursos_to_newPercursoFragment)
-        }
 
     }
+    inner class PercursosAdapter : RecyclerView.Adapter<PercursosAdapter.ViewHolder>() {
 
-    inner class PercursosAdapter : RecyclerView.Adapter<PercursosAdapter.ViewHolder>(){
-
-        inner class ViewHolder(binding: RowPercursoBinding) : RecyclerView.ViewHolder(binding.root){
-            val textViewId : TextView = binding.textViewId
-            val textViewName : TextView = binding.textViewName
-            val textViewDuracao : TextView = binding.textViewduracao
-            val imagem : ImageView = binding.imageViewPercurso
-            val line : ConstraintLayout = binding.linha
+        inner class ViewHolder(binding: RowPercursoBinding) :
+            RecyclerView.ViewHolder(binding.root) {
+            val textViewId: TextView = binding.textViewId
+            val textViewName: TextView = binding.textViewName
+            val textViewDuracao: TextView = binding.textViewduracao
+            val imagem: ImageView = binding.imageViewPercurso
+            val line: ConstraintLayout = binding.linha
 
         }
 
@@ -85,11 +86,13 @@ class Percursos : Fragment() {
                 RowPercursoBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
-                    false))
+                    false
+                )
+            )
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            var percurso = percursos[position]
+            var percurso = Spercursos[position]
             holder.apply {
                 val storage = Firebase.storage
 
@@ -102,7 +105,7 @@ class Percursos : Fragment() {
                     val storageRef = storage.reference
                     var islandRef = storageRef.child("images/${it}")
 
-                    val ONE_MEGABYTE: Long = 10024*1024
+                    val ONE_MEGABYTE: Long = 10024 * 1024
                     islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener {
                         val inputStream = it.inputStream()
                         val bitmap = BitmapFactory.decodeStream(inputStream)
@@ -114,26 +117,23 @@ class Percursos : Fragment() {
                 line.setOnClickListener {
                     val bundle = Bundle()
                     bundle.putString("id_percurso", percurso.percursoId)
-                    findNavController().navigate(R.id.action_percursos_to_percursoDetailFrafment,bundle)
+                    findNavController().navigate(
+                        R.id.action_navigation_measurements_to_participantesPorPercursoFragment,
+                        bundle
+                    )
                 }
 
             }
         }
 
         override fun getItemCount(): Int {
-            return percursos.size
+            return Spercursos.size
         }
-
     }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                findNavController().popBackStack()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
-

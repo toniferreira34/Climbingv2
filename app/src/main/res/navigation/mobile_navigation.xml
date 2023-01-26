@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.climbing.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/Home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_percursos"
@@ -19,15 +19,19 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.climbing.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_measurements"
+        android:name="com.example.climbing.ui.measurements.MeasurementsFragment"
+        android:label="@string/Measurements"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_measurements_to_participantesPorPercursoFragment"
+            app:destination="@id/participantesPorPercursoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.climbing.ui.notifications.ProfileFragment"
-        android:label="@string/title_Profile"
+        android:name="com.example.climbing.ui.profile.ProfileFragment"
+        android:label="@string/Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/percursos"
@@ -76,5 +80,33 @@
     <fragment
         android:id="@+id/participantesFragment2"
         android:name="com.example.climbing.ui.home.ParticipantesFragment"
-        android:label="ParticipantesFragment" />
+        android:label="ParticipantesFragment" >
+        <action
+            android:id="@+id/action_participantesFragment2_to_new_participanteFragment"
+            app:destination="@id/new_participanteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/participantesPorPercursoFragment"
+        android:name="com.example.climbing.ui.measurements.ParticipantesPorPercursoFragment"
+        android:label="fragment_participantes_por_percurso"
+        tools:layout="@layout/fragment_participantes_por_percurso" >
+        <argument
+            android:name="id_percurso"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_participantesPorPercursoFragment_to_sendMeasurementsFragment"
+            app:destination="@id/sendMeasurementsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendMeasurementsFragment"
+        android:name="com.example.climbing.ui.measurements.SendMeasurementsFragment"
+        android:label="fragment_send_measurements"
+        tools:layout="@layout/fragment_send_measurements" >
+        <argument
+            android:name="id_percurso"
+            app:argType="string" />
+        <argument
+            android:name="Id_participante"
+            app:argType="string" />
+    </fragment>
 </navigation>

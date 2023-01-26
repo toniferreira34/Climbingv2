@@ -1,11 +1,13 @@
 package com.example.climbing.ui.home
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -81,7 +83,7 @@ class PercursoDetailFragment : Fragment() {
             val textViewId : TextView = binding.textViewId
             val textViewName : TextView = binding.textViewNameParticipante
             val textViewNacionalidade : TextView = binding.textViewNacionalidade
-
+            val imagem: ImageView = binding.imageViewParticipanteRow
 
         }
 
@@ -101,6 +103,20 @@ class PercursoDetailFragment : Fragment() {
                 textViewId.text = participantes.participanteId
                 textViewName.text = participantes.name
                 textViewNacionalidade.text = participantes.nacionalidade
+
+                participantes?.photoParticipante?.let {
+                    val storage = Firebase.storage
+                    val storageRef = storage.reference
+                    var islandRef = storageRef.child("images/${it}")
+
+                    val ONE_MEGABYTE: Long = 10024*1024
+                    islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+                        val inputStream = it.inputStream()
+                        val bitmap = BitmapFactory.decodeStream(inputStream)
+                        imagem.setImageBitmap(bitmap)
+
+                    }
+                }
             }
         }
 

@@ -3,24 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="180dp"
+    android:id="@+id/linha">
 
     <TextView
         android:id="@+id/textViewNameParticipante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="52dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewParticipanteRow"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="52dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/textViewNameParticipante"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,9 +30,19 @@
         android:id="@+id/textViewNacionalidade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
+        android:layout_marginStart="29dp"
         android:layout_marginTop="54dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/textViewId"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewParticipanteRow"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="69dp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewNameParticipante"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_account" />
 </androidx.constraintlayout.widget.ConstraintLayout>

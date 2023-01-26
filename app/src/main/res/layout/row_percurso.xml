@@ -23,7 +23,7 @@
         android:layout_marginStart="152dp"
         android:layout_marginTop="40dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPercurso"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -33,11 +33,11 @@
         android:layout_marginStart="152dp"
         android:layout_marginTop="128dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPercurso"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageViewPercurso"
         android:layout_width="83dp"
         android:layout_height="101dp"
         android:layout_marginStart="16dp"

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.measurements.MeasurementsFragment">
+    tools:context=".ui.measurements.SelectPercursoFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerViewPercursoSelec"
+        android:id="@+id/RecyclerViewPercursos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"

@@ -1,11 +1,13 @@
 package com.example.climbing.ui.home
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -66,7 +68,7 @@ class ParticipantesFragment : Fragment() {
 
 
         binding.floatingParticipante.setOnClickListener{
-
+           findNavController().navigate(R.id.action_participantesFragment2_to_new_participanteFragment)
         }
     }
 
@@ -76,6 +78,7 @@ class ParticipantesFragment : Fragment() {
             val textViewId : TextView = binding.textViewId
             val textViewName : TextView = binding.textViewNameParticipante
             val textViewNacionalidade : TextView = binding.textViewNacionalidade
+            val imagem : ImageView = binding.imageViewParticipanteRow
 
 
         }
@@ -89,13 +92,27 @@ class ParticipantesFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            var participantes = participantes[position]
+            var participante = participantes[position]
             holder.apply {
                 val storage = Firebase.storage
 
-                textViewId.text = participantes.participanteId
-                textViewName.text = participantes.name
-                textViewNacionalidade.text = participantes.nacionalidade
+                textViewId.text = participante.participanteId
+                textViewName.text = participante.name
+                textViewNacionalidade.text = participante.nacionalidade
+
+                participante?.photoParticipante?.let {
+                    val storage = Firebase.storage
+                    val storageRef = storage.reference
+                    var islandRef = storageRef.child("images/${it}")
+
+                    val ONE_MEGABYTE: Long = 10024*1024
+                    islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+                        val inputStream = it.inputStream()
+                        val bitmap = BitmapFactory.decodeStream(inputStream)
+                        imagem.setImageBitmap(bitmap)
+
+                    }
+                }
             }
         }
 
