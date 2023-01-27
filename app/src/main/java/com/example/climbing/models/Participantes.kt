@@ -5,6 +5,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.HashMap
+import java.util.UUID
 
 class Participantes (
 
@@ -16,19 +17,6 @@ class Participantes (
     ){
 
 
-    fun sendparticipante(callback: (error:String?)->Unit) {
-        val uid =  FirebaseAuth.getInstance().currentUser!!.uid
-
-        val db = Firebase.firestore
-        db.collection("participante").document(uid)
-            .set(toHashMap())
-            .addOnSuccessListener {
-                callback(null)
-            }
-            .addOnFailureListener { e->
-                callback(e.toString())
-            }
-    }
 
     fun toHashMap() : HashMap<String, Any?> {
         return hashMapOf(
@@ -48,7 +36,7 @@ class Participantes (
 
         val db = Firebase.firestore
         db.collection("participantes")
-            .document(uid)
+            .document(UUID.randomUUID().toString())
             .set(toHashMap())
             .addOnSuccessListener {
                 callback(null)

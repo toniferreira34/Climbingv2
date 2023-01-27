@@ -58,7 +58,7 @@ class New_participanteFragment : Fragment() {
 
             storeBitmap(imageUri!!){
                 Participantes(
-                    binding.editTextIdParticipante.text.toString(),
+                    UUID.randomUUID().toString(),
                     binding.editTextParticipanteName.text.toString(),
                     binding.editTextParticipanteIdade.text.toString(),
                     binding.editTextNacionalidade.text.toString(),
