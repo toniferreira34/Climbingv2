@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.climbing.Id_Percurso
 import com.example.climbing.R
 import com.example.climbing.databinding.FragmentParticipantesBinding
 import com.example.climbing.databinding.FragmentParticipantesPorPercursoBinding
@@ -101,7 +102,7 @@ class ParticipantesPorPercursoFragment : Fragment() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             var participante = participantes[position]
-            //var percurso = percurso[position]
+
             holder.apply {
                 val storage = Firebase.storage
 
@@ -124,7 +125,7 @@ class ParticipantesPorPercursoFragment : Fragment() {
                 }
                 line.setOnClickListener {
                     val bundle = Bundle()
-                   // bundle.putString("id_percurso", percurso.percursoId)
+
                     bundle.putString("Id_participante", participante.participanteId)
                     findNavController().navigate(R.id.action_participantesPorPercursoFragment_to_sendMeasurementsFragment, bundle)
                 }
@@ -136,6 +137,15 @@ class ParticipantesPorPercursoFragment : Fragment() {
 
         }
 
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                findNavController().popBackStack()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 

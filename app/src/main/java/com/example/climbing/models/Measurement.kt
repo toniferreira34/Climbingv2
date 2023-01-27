@@ -5,6 +5,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.HashMap
+import java.util.UUID
 
 class Measurement (
     var id_Participante:        String?,
@@ -22,7 +23,7 @@ class Measurement (
         val uid =  FirebaseAuth.getInstance().currentUser!!.uid
 
         val db = Firebase.firestore
-        db.collection("Measurements").document(uid)
+        db.collection("Measurements").document(UUID.randomUUID().toString())
             .set(toHashMap())
             .addOnSuccessListener {
                 callback(null)

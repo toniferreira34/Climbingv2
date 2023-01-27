@@ -3,6 +3,7 @@ package com.example.climbing.ui.measurements
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.climbing.Id_Percurso
 import com.example.climbing.R
 import com.example.climbing.databinding.FragmentDashboardBinding
 import com.example.climbing.databinding.FragmentSelectPercursoBinding
@@ -116,6 +118,7 @@ class MeasurementsFragment : Fragment() {
 
                 line.setOnClickListener {
                     val bundle = Bundle()
+                    requireContext().Id_Percurso = percurso.percursoId
                     bundle.putString("id_percurso", percurso.percursoId)
                     findNavController().navigate(
                         R.id.action_navigation_measurements_to_participantesPorPercursoFragment,
@@ -134,6 +137,16 @@ class MeasurementsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                findNavController().popBackStack()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

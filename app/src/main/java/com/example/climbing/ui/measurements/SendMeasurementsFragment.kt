@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -14,6 +15,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.climbing.Id_Percurso
 import com.example.climbing.R
 import com.example.climbing.databinding.FragmentNewParticipanteBinding
 import com.example.climbing.databinding.FragmentSendMeasurementsBinding
@@ -70,18 +72,34 @@ class SendMeasurementsFragment : Fragment() {
 
 
         binding.RegisterMeasurementButton.setOnClickListener {
-            if (binding.checkBoxTired.isChecked){
 
-            }else{
+                Measurement(
+                    idParticipante,
+                    requireContext().Id_Percurso,
+                    binding.textViewBlood.text.toString(),
+                    binding.textViewHeadbeat.text.toString(),
+                    binding.checkBoxTired.isChecked,
+                    binding.checkBoxinsomnia.isChecked,
+                    binding.checkBoxdiziness.isChecked,
+                    binding.checkBoxHeadaches.isChecked
+                ).sendmeasurement { error ->
+                    error?.let {
+                        Toast.makeText(requireContext(), "Ocurreu algum erro!", Toast.LENGTH_LONG)
+                            .show()
+                    } ?: kotlin.run {
+                        Toast.makeText(requireContext(), "Guardado com sucesso!", Toast.LENGTH_LONG)
+                            .show()
 
-            }
+                    }
 
 
+                }
         }
 
 
         return binding.root
     }
+
 
     private fun showAlertDialogNegativos(){
         AlertDialog.Builder(requireContext())
@@ -103,9 +121,19 @@ class SendMeasurementsFragment : Fragment() {
             .create()
             .show()
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                findNavController().popBackStack()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
 
     companion object {
 
     }
+
 }
