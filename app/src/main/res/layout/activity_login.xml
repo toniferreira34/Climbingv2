@@ -9,55 +9,80 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="63dp"
-        android:layout_marginEnd="155dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="112dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@mipmap/climbing"
+        tools:srcCompat="@mipmap/climbing" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="114dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="84dp"
+        android:background="@drawable/custom_edit"
+        android:drawableStart="@drawable/custom_email"
+        android:drawablePadding="12dp"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Name"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="164dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="232dp"
+        android:layout_marginBottom="108dp"
         android:text="Login"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonRegister"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="146dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="108dp"
         android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintStart_toEndOf="@+id/buttonLogin"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="112dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="85dp"
+        android:background="@drawable/custom_edit"
+        android:drawableStart="@drawable/custom_lock"
+        android:drawablePadding="12dp"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName"
         tools:ignore="SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
