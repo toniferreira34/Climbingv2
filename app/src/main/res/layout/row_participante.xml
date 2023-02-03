@@ -10,34 +10,38 @@
 
     <TextView
         android:id="@+id/textViewNameParticipante"
-        android:layout_width="74dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="86dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/imageViewParticipanteRow"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewNacionalidade"
-        android:layout_width="72dp"
-        android:layout_height="41dp"
+        android:layout_width="115dp"
+        android:layout_height="64dp"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="23dp"
         android:text="TextView"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textViewNameParticipante"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewParticipanteRow"
-        android:layout_width="93dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="116dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="15dp"
 
-        android:layout_marginEnd="69dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toStartOf="@+id/textViewNameParticipante"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/custom_account" />
 </androidx.constraintlayout.widget.ConstraintLayout>

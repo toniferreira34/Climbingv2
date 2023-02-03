@@ -133,12 +133,6 @@ class MeasurementsFragment : Fragment() {
             return Spercursos.size
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -148,5 +142,11 @@ class MeasurementsFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+    
 
 }
