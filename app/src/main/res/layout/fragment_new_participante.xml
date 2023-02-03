@@ -9,23 +9,24 @@
 
     <ImageView
         android:id="@+id/imageViewParticipante"
-        android:layout_width="115dp"
-        android:layout_height="118dp"
+        android:layout_width="128dp"
+        android:layout_height="144dp"
         android:layout_marginStart="142dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="140dp"
         android:layout_marginEnd="245dp"
+        android:elevation="1dp"
         android:src="@drawable/custom_account"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_account" />
 
     <EditText
         android:id="@+id/editTextParticipanteName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="102dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="325dp"
         android:layout_marginEnd="95dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
@@ -33,9 +34,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/editTextParticipanteIdade"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
@@ -44,13 +46,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="102dp"
         android:layout_marginEnd="95dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Idade"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextNacionalidade"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -59,21 +62,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="102dp"
         android:layout_marginEnd="95dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="12dp"
         android:ems="10"
         android:hint="Nacionalidade"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonSalvarParticipante"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonSalvarParticipante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="163dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="160dp"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNacionalidade" />
