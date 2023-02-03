@@ -4,28 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".ui.profile.ProfileFragment"
+    android:background="@mipmap/profle"
+    >
 
     <TextView
         android:id="@+id/textNameUser"
-        android:layout_width="0dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="160dp"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="112dp"
         android:layout_marginEnd="75dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="36dp"
+        android:background="@color/white"
         android:hint="Name"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textEmailUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
 
     <TextView
         android:id="@+id/textEmailUser"
-        android:layout_width="0dp"
-        android:layout_height="70px"
-        android:layout_marginStart="160dp"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="112dp"
         android:layout_marginEnd="75dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="60dp"
+        android:background="@color/white"
+        android:textColor="@color/black"
         android:hint="Email"
         app:layout_constraintBottom_toTopOf="@+id/buttonLogOut"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,8 +44,8 @@
         android:id="@+id/buttonLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginBottom="188dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginBottom="76dp"
         android:text="LogOut"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -46,9 +54,34 @@
         android:id="@+id/imageProfile"
         android:layout_width="185dp"
         android:layout_height="168dp"
-        android:layout_marginStart="136dp"
+        android:layout_marginStart="112dp"
         android:layout_marginBottom="36dp"
         android:src="@drawable/ic_baseline_account_circle_24"
+
         app:layout_constraintBottom_toTopOf="@+id/textNameUser"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="36dp"
+        android:textColor="@color/black"
+        android:hint="Name: "
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="184dp"
+        android:hint="Email: "
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

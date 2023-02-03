@@ -19,6 +19,7 @@ import com.example.climbing.models.Percurso
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import java.util.*
 
 
 class New_percursoFragment : Fragment() {
@@ -66,7 +67,7 @@ class New_percursoFragment : Fragment() {
 
             storeBitmap(imageUri!!){
                 Percurso(
-                    binding.editTextPercursoId.text.toString(),
+                    UUID.randomUUID().toString(),
                     binding.editTextPercursoName.text.toString(),
                     binding.editTextPercursoDuracao.text.toString(),
                     it

@@ -83,7 +83,7 @@ class ParticipantesPorPercursoFragment : Fragment() {
     inner class ParticipantesAdapter : RecyclerView.Adapter<ParticipantesAdapter.ViewHolder>(){
 
         inner class ViewHolder(binding: RowParticipanteBinding) : RecyclerView.ViewHolder(binding.root){
-            val textViewId : TextView = binding.textViewId
+
             val textViewName : TextView = binding.textViewNameParticipante
             val textViewNacionalidade : TextView = binding.textViewNacionalidade
             val imagem : ImageView = binding.imageViewParticipanteRow
@@ -106,7 +106,7 @@ class ParticipantesPorPercursoFragment : Fragment() {
             holder.apply {
                 val storage = Firebase.storage
 
-                textViewId.text = participante.participanteId
+
                 textViewName.text = participante.name
                 textViewNacionalidade.text = participante.nacionalidade
 

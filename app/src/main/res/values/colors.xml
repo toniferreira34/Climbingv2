@@ -12,4 +12,7 @@
     <color name="DarkBlue">#00008b</color>
     <color name="green_blue">#008080</color>
     <color name="gray">#a0a0a0</color>
+    <color name="grayClaro">#d3d3d3</color>
+    <color name="marfim">#fffff0</color>
+
 </resources>

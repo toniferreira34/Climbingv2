@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="180dp"
-    android:id="@+id/linha">
+    android:id="@+id/linha"
+    android:background="@color/grayClaro"
+    android:layout_marginTop="15dp">
 
     <TextView
         android:id="@+id/textViewNameParticipante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="74dp"
+        android:layout_height="41dp"
         android:layout_marginStart="69dp"
         android:layout_marginTop="52dp"
         android:text="TextView"
@@ -17,30 +19,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="52dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textViewNameParticipante"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textViewNacionalidade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="54dp"
+        android:layout_width="72dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="23dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textViewId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewNameParticipante"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewParticipanteRow"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="93dp"
+        android:layout_height="92dp"
         android:layout_marginTop="28dp"
+
         android:layout_marginEnd="69dp"
         app:layout_constraintEnd_toStartOf="@+id/textViewNameParticipante"
         app:layout_constraintTop_toTopOf="parent"

@@ -4,7 +4,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.util.HashMap
+import java.util.*
 
 data class Percurso(
     
@@ -24,16 +24,19 @@ data class Percurso(
     }
 
     fun sendPercurso(callback: (error:String?)->Unit) {
+        val uid =  FirebaseAuth.getInstance().currentUser!!.uid
+
         val db = Firebase.firestore
         db.collection("percursos")
-            .add(toHashMap())
-            .addOnSuccessListener { documentReference ->
+            .document(UUID.randomUUID().toString())
+            .set(toHashMap())
+            .addOnSuccessListener {
                 callback(null)
-            }
-            .addOnFailureListener { e ->
-                callback(e.toString())
+            }.addOnFailureListener {
+                callback(it.toString())
             }
     }
+
 
     companion object {
 

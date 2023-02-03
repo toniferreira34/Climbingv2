@@ -2,47 +2,68 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linha"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:id="@+id/linha">
-
-    <TextView
-        android:id="@+id/textViewId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="88dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_marginTop="15dp"
+    android:background="@color/grayClaro">
 
     <TextView
         android:id="@+id/textViewName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageViewPercurso"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="91dp"
+        android:layout_height="46dp"
+        android:elevation="1dp"
+        android:text="Nome"
+        android:textAlignment="center"
+        android:textColor="#FEFEFE"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.896" />
 
     <TextView
         android:id="@+id/textViewduracao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="128dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageViewPercurso"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="94dp"
+        android:layout_height="42dp"
+        android:elevation="1dp"
+        android:text="Duracao"
+        android:textAlignment="center"
+        android:textColor="#FEFEFE"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.873" />
 
     <ImageView
         android:id="@+id/imageViewPercurso"
-        android:layout_width="83dp"
-        android:layout_height="101dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="0.2dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:srcCompat="@mipmap/back" />
+
+    <ImageView
+        android:id="@+id/rectangle"
+        android:layout_width="411dp"
+        android:layout_height="69dp"
+        android:elevation="0.3dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@drawable/ic_baseline_rectangle_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

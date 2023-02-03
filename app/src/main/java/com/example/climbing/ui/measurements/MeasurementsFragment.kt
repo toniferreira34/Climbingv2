@@ -75,7 +75,7 @@ class MeasurementsFragment : Fragment() {
 
         inner class ViewHolder(binding: RowPercursoBinding) :
             RecyclerView.ViewHolder(binding.root) {
-            val textViewId: TextView = binding.textViewId
+
             val textViewName: TextView = binding.textViewName
             val textViewDuracao: TextView = binding.textViewduracao
             val imagem: ImageView = binding.imageViewPercurso
@@ -98,7 +98,7 @@ class MeasurementsFragment : Fragment() {
             holder.apply {
                 val storage = Firebase.storage
 
-                textViewId.text = percurso.percursoId
+
                 textViewName.text = percurso.name
                 textViewDuracao.text = percurso.duracao
 
